@@ -33,11 +33,12 @@ install:
   - pip install --user conan
   - source ~/.profile
   - conan user
-  - conan install ..
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
+    conan install .. -s compiler.libcxx=libstdc++11;
     cmake -DCMAKE_BUILD_TYPE=Coverage -DUSE_GCOV=On .. ;
     fi
-  - if [ "$TRAVIS_OS_NAME" = "osx"   ]; then
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+    conan install ..;
     cmake -DCMAKE_BUILD_TYPE=Debug .. ;
     fi
   - make
