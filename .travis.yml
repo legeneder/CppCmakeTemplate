@@ -33,6 +33,7 @@ install:
   - pip install --user conan
   - source ~/.profile
   - conan user
+  - conan profile show default
   - conan install .. 
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
     cmake -DCMAKE_BUILD_TYPE=Coverage -DUSE_GCOV=On .. ;
