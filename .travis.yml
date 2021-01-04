@@ -38,7 +38,7 @@ install:
     cmake -DCMAKE_BUILD_TYPE=Coverage -DUSE_GCOV=On .. ;
     fi
   - if ["$TRAVIS_OS_NAME" = "osx"]; then
-    cmake -DCMAKE_BUILD_Type=Debug .. ;
+    cmake -DCMAKE_BUILD_TYPE=Debug .. ;
     fi
   - make
 
