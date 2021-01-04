@@ -1,0 +1,34 @@
+language: cpp
+
+dist: bionic
+
+matrix:
+  include: 
+    - name: "Linux"
+      os: linux
+      env: 
+        - MATRIX_EVAL="CC=gcc-7 &&=g++-7"
+      addons:
+        apt:
+          sources: 
+            - 'ubuntu-toolchain-r-test'
+          packages:
+            - g++-7
+            - lcov
+            - gcovr
+    - name: "MacOS"
+      os: osx
+      osx_image: xcode10
+      env:
+        -MATRIX_EVAL="CC=clang && CXX=clang++"
+
+before_install:
+  - eval "${MATRIX_EVAL}"
+
+install:
+  - mkdir build
+  - cd build
+  - pip install --user conan
+  - source ~/.profile
+  - conan user
+  - conan install .. 
