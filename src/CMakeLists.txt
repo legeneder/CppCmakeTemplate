@@ -1,0 +1,5 @@
+set(LIBRARY_SOURCES "my_lib.cpp")
+set(LIBRARY_INCLUDES "${PROJECT_SOURCE_DIR}/include/")
+add_library(${LIBRARY_NAME} OBJECT STATIC ${LIBRARY_SOURCES})
+target_include_directories(${LIBRARY_NAME} PUBLIC ${LIBRARY_INCLUDES})
+target_link_libraries(${LIBRARY_NAME} PUBLIC ${LIBRARY_LINALG} ${LIBRARY_LOG})
