@@ -34,25 +34,25 @@ install:
   - source ~/.profile
   - conan user
   - conan install .. 
-  - if ["$TRAVIS_OS_NAME" = "linux"]; then
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
     cmake -DCMAKE_BUILD_TYPE=Coverage -DUSE_GCOV=On .. ;
     fi
-  - if ["$TRAVIS_OS_NAME" = "osx"]; then
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     cmake -DCMAKE_BUILD_TYPE=Debug .. ;
     fi
   - make
 
 script:
-    - if ["$TRAVIS_OS_NAME" = "linux"];
+    - if [ "$TRAVIS_OS_NAME" = "linux" ];
       then make CppTemplate_coverage;
       fi
-    - if ["$TRAVIS_OS_NAME" = "osx"];
+    - if [ "$TRAVIS_OS_NAME" = "osx" ];
       then make CppTemplate_unit_tests;
-      ctest
+      ctest;
       fi
 
 after_success:
-  - if ["$TRAVIS_OS_NAME" = "linux"]; then  bash <(curl -s https://codecov.io/bash); fi
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then  bash <(curl -s https://codecov.io/bash); fi
 
 notifications:
   email:
