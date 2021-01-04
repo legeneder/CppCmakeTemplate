@@ -13,6 +13,7 @@ endif()
 
 target_compile_options(${TEST_MAIN} PUBLIC ${TEST_FLAGS})
 target_compile_features(${TEST_MAIN} PUBLIC cxx_std_17)
+target_set_warnings(TARGET ${TEST_MAIN} ENABLE OFF AS_ERROR OFF)
 
 add_test(NAME ${LIBRARY_NAME}.${TEST_MAIN} COMMAND ${TEST_MAIN})
 

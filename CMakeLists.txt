@@ -20,7 +20,8 @@ set(LIBRARY_BENCH celero)
 
 #options
 option(USE_GCOV "Create a GCov-enabled." OFF)
-OPTION(USE_BENCHMARKS "Create a Benchmark-enabled build" OFF)
+option(USE_BENCHMARKS "Create a Benchmark-enabled build" OFF)
+option(ENABLE_WARNINGS "Allow target_set_warnings to add warnings." ON)
 
 # Configuration Files
 configure_file("${PROJECT_SOURCE_DIR}/include/ProjectConfig.h.in"
@@ -29,6 +30,8 @@ configure_file("${PROJECT_SOURCE_DIR}/include/ProjectConfig.h.in"
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
 include(Documentation)
 include(CTest)
+include(ConfigSafeGuards)
+include(Warnings)
 if(USE_GCOV)
     if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
         include(CodeCoverage)

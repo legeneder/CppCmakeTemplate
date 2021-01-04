@@ -14,5 +14,6 @@ if(USE_BENCHMARKS)
     #target_compile_features(${LIBRARY_NAME} PUBLIC cxx_std_17)
     target_link_libraries(${BENCHMARK_MAIN} PUBLIC ${LIBRARY_NAME})
     target_link_libraries(${BENCHMARK_MAIN} PUBLIC ${LIBRARY_BENCH})
+    target_set_warnings(TARGET ${MAIN} ENABLE OFF AS_ERROR OFF)
 
 endif()
